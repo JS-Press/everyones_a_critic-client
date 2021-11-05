@@ -5,8 +5,8 @@ function ArtCard({crits, title, artist, url, description, id, yearMade, handleDe
 
 
     const [criting, setCriting] = useState(false)
-    const [newCrit, setNewCrit] = useState('your thoughts...')
-    const [newName, setNewName] = useState('your name...')
+    const [newCrit, setNewCrit] = useState('')
+    const [newName, setNewName] = useState('')
     const [critList, setCritList] = useState(crits)
 
 
@@ -18,6 +18,9 @@ function handleAddNewCrit(){
 setCriting(true)
 }
 
+function handleCancelCrit(){
+    setCriting(false)
+}
 
 function handlePublishCrit(){
 // create new interpretation
@@ -59,18 +62,26 @@ setNewName(e.target.value)
   {/* <h5>interpretations, comments, critiques...</h5> */}
   {criting === true ? <>
     <form>
+    <label>
+     your critique:
     <input
     type='text'
     value={newCrit}
     onChange={handleCritChange}
     />
+    </label>
+    <label>
+        your name:
     <input
     type='text'
     value={newName}
     onChange={handleNameChange}
     />
+    </label>
 </form>
-  <button className="centered" onClick={handlePublishCrit}>publish crit</button>
+  <button className="centered" onClick={handlePublishCrit}>publish</button>
+  <button className="centered" id='cancelB' onClick={handleCancelCrit}>cancel</button>
+
   </>
   : <>
   {interpretations }
