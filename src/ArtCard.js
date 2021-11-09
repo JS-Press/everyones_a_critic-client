@@ -2,15 +2,25 @@ import { useState } from 'react'
 import CritCard from './CritCard'
 
 function ArtCard({crits, title, artist, url, description, id, yearMade, handleDeleteArtwork }){
-
-
+    
+    
     const [criting, setCriting] = useState(false)
     const [newCrit, setNewCrit] = useState('')
     const [newName, setNewName] = useState('')
     const [critList, setCritList] = useState(crits)
-
-
-const interpretations = critList.map((inter)=> <CritCard crit={inter.crit} username={inter.username} likeCount={inter.like_count} artId={inter.artwork_id} key={inter.id} critId={inter.id} />)
+    
+    function handleDelCrit(critiqueId){
+      
+        fetch(`http://localhost:9393/interpretations/${critiqueId}`, {  method: "DELETE" })
+        .then(r => r.json())
+        .then(d=>{
+            console.log(d)
+        })
+        const newCritList = critList.filter((c) => c.id !== critiqueId)
+        setCritList(newCritList)
+       }
+    
+    const interpretations = critList.map((inter)=> <CritCard crit={inter.crit} username={inter.username} likeCount={inter.like_count} artId={inter.artwork_id} key={inter.id} critId={inter.id} handleDelCrit={handleDelCrit}/>)
 
 
 function handleAddNewCrit(){
@@ -35,6 +45,7 @@ fetch(`http://localhost:9393/interpretations`, {  method: "POST",
     .then(d=>{
         console.log(d)
         setNewCrit('')
+        setNewName('')
         setCriting(false)
         setCritList([...critList, d])
     })
@@ -49,6 +60,7 @@ setNewCrit(e.target.value)
 function handleNameChange(e){
 setNewName(e.target.value)
 }
+
 
 
     return(

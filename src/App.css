@@ -24,6 +24,25 @@ form {
 }
 
 
+#searchLabel {
+  position: relative;
+  left: 300px;
+  top:0px;
+  font-size: .85em;
+  color:rgb(129, 129, 129);
+}
+
+.searchbar {
+  position:relative;
+  top: 0px;
+  left:-89px;
+  width: 500px;
+  z-index:1000;
+  padding:5px;
+  background-color:eggshell;
+  margin-bottom: -100px;
+}
+
 input {
   
   border: 1px solid #d9d9d9;
@@ -131,7 +150,7 @@ div {
   border-radius: 30px;
   border-width: 2px;
   border-style: solid;
-  border-color:rgb(173, 173, 173);
+  /* border-color:rgb(173, 173, 173); */
   background-color:white;
   max-width:flex-end;
   font-size: 1em;
@@ -142,6 +161,8 @@ div {
   margin-bottom:-12px;
   margin-top: -5px;
 }
+
+
 
 #desc {
   display:flex;
@@ -201,6 +222,7 @@ button {
   
   position:relative;
   top: -10px;
+  margin-top:10px;
   margin-bottom:30px;
 }
 
@@ -234,7 +256,7 @@ width: 100px;
 border-radius: 30px;
   border-width: 2px;
   border-style: solid;
-  border-color:rgb(173, 173, 173);
+  /* border-color:rgb(173, 173, 173); */
   background-color:rgb(173, 173, 173);
   font-size: 1em;
   font-weight:bold;
@@ -252,3 +274,15 @@ border-radius: 30px;
   background-color:white;
 }
 
+#delCritB {
+  display:flex;
+  position:relative;
+  top:-50px;
+  left:148px;
+  width: 5px;
+  height: 5px;
+  background-color:transparent;
+  color:black;
+  text-align:flex-start;
+  font-weight:lighter;
+}
